@@ -18,9 +18,9 @@ with app.app_context():
     db.session.add_all([ep1, ep2, ep3])
 
     # Add Guests
-    g1 = Guest(name="Michael J. Fox", occupation="actor")
-    g2 = Guest(name="Sandra Bernhard", occupation="comedian")
-    g3 = Guest(name="Tracey Ullman", occupation="television actress")
+    g1 = Guest(name="Brian Muema", occupation="actor")
+    g2 = Guest(name="Dancan Odhiambo", occupation="comedian")
+    g3 = Guest(name="Praxcedes Kabeya", occupation="television actress")
 
     db.session.add_all([g1, g2, g3])
 

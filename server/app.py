@@ -4,11 +4,11 @@ from flask_migrate import Migrate
 from flask_restful import Api, Resource
 from server.models import db, Episode, Guest, Appearance
 
-#  Create Flask App
+#  Creating  Flask App
 def create_app():
     app = Flask(__name__)
 
-    # Ensure the folder for the database exists
+    # Ensuring folder for the database exists
     db_folder = os.path.join(os.path.dirname(__file__), 'server')
     os.makedirs(db_folder, exist_ok=True)
     db_path = os.path.join(db_folder, 'app.db')
@@ -17,7 +17,7 @@ def create_app():
     app.config['SQLALCHEMY_DATABASE_URI'] = f'sqlite:///{db_path}'
     app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 
-    # Initialize extensions
+    # Initializing extensions
     db.init_app(app)
     Migrate(app, db)
     api = Api(app)
@@ -67,7 +67,7 @@ def create_app():
             data = request.get_json()
             errors = []
 
-            # Validate required fields
+            # Validating required fields
             for key in ('rating', 'episode_id', 'guest_id'):
                 if key not in data:
                     errors.append(f"{key} is required")
