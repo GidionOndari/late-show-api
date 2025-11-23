@@ -10,14 +10,14 @@ with app.app_context():
     Guest.query.delete()
     db.session.commit()
 
-    # ----------------- Add Episodes -----------------
+    # Add Episodes
     ep1 = Episode(date="1/11/99", number=1)
     ep2 = Episode(date="1/12/99", number=2)
     ep3 = Episode(date="1/13/99", number=3)
 
     db.session.add_all([ep1, ep2, ep3])
 
-    # ----------------- Add Guests -----------------
+    # Add Guests
     g1 = Guest(name="Michael J. Fox", occupation="actor")
     g2 = Guest(name="Sandra Bernhard", occupation="comedian")
     g3 = Guest(name="Tracey Ullman", occupation="television actress")
@@ -26,7 +26,7 @@ with app.app_context():
 
     db.session.commit()
 
-    # ----------------- Add Appearances -----------------
+    # Add Appearances
     a1 = Appearance(rating=4, episode_id=ep1.id, guest_id=g1.id)
     a2 = Appearance(rating=5, episode_id=ep2.id, guest_id=g3.id)
     a3 = Appearance(rating=3, episode_id=ep2.id, guest_id=g2.id)

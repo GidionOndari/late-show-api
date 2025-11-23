@@ -4,7 +4,7 @@ from flask_migrate import Migrate
 from flask_restful import Api, Resource
 from server.models import db, Episode, Guest, Appearance
 
-# ----------------- Create Flask App -----------------
+#  Create Flask App
 def create_app():
     app = Flask(__name__)
 
@@ -22,12 +22,12 @@ def create_app():
     Migrate(app, db)
     api = Api(app)
 
-    # ----------------- Base Route -----------------
+    # Base Route
     @app.route("/")
     def index():
         return jsonify({"message": "Late Show API Running!"})
 
-    # ----------------- Episodes -----------------
+    # Episodes
     class EpisodesResource(Resource):
         def get(self):
             episodes = Episode.query.all()
@@ -53,7 +53,7 @@ def create_app():
     api.add_resource(EpisodesResource, '/episodes')
     api.add_resource(EpisodeDetailResource, '/episodes/<int:id>')
 
-    # ----------------- Guests -----------------
+    # Guests
     class GuestsResource(Resource):
         def get(self):
             guests = Guest.query.all()
@@ -61,7 +61,7 @@ def create_app():
 
     api.add_resource(GuestsResource, '/guests')
 
-    # ----------------- Appearances -----------------
+    #  Appearances
     class AppearancesResource(Resource):
         def post(self):
             data = request.get_json()
@@ -97,9 +97,9 @@ def create_app():
 
     return app
 
-# ----------------- Run App -----------------
+# Run App
 if __name__ == "__main__":
     app = create_app()
     with app.app_context():
-        db.create_all()  # Creates tables if missing
+        db.create_all()  # Creates tables
     app.run(port=5555, debug=True)

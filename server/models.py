@@ -5,7 +5,7 @@ from sqlalchemy_serializer import SerializerMixin
 # Initialize SQLAlchemy
 db = SQLAlchemy()
 
-# ----------------- Episode Model -----------------
+# Episode Model 
 class Episode(db.Model, SerializerMixin):
     __tablename__ = "episodes"
     serialize_rules = ('-appearances.episode',)
@@ -21,7 +21,7 @@ class Episode(db.Model, SerializerMixin):
         cascade="all, delete-orphan"
     )
 
-# ----------------- Guest Model -----------------
+#Guest Model 
 class Guest(db.Model, SerializerMixin):
     __tablename__ = "guests"
     serialize_rules = ('-appearances.guest',)
@@ -37,7 +37,7 @@ class Guest(db.Model, SerializerMixin):
         cascade="all, delete-orphan"
     )
 
-# ----------------- Appearance Model -----------------
+# Appearance Model 
 class Appearance(db.Model, SerializerMixin):
     __tablename__ = "appearances"
     serialize_rules = ('-episode.appearances', '-guest.appearances')
